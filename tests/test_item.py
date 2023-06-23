@@ -12,3 +12,16 @@ def test_apply_discount():
     Item.pay_rate = 0.8
     item1.apply_discount()
     assert item1.price == 8000.0
+
+
+def test_name():
+    """Тестирует применение декоратора @property к приватному агрументу name"""
+    item = Item("Телефон", 10000, 20)
+
+    # длина наименования товара меньше 10 символов
+    item.name = 'Смартфон'
+    assert item.name == 'Смартфон'
+
+    # длина наименования товара больше 10 символов
+    item.name = 'СуперСмартфон'
+    assert item.name == 'СуперСмарт'
