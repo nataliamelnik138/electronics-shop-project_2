@@ -66,3 +66,9 @@ class Item:
     def string_to_number(number_str):
         """Возвращает число из числа-строки"""
         return int(float(number_str))
+
+    def __add__(self, other):
+        if isinstance(other, self.__class__):
+            return self.quantity + other.quantity
+        else:
+            return None
