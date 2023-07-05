@@ -71,4 +71,4 @@ class Item:
         if isinstance(other, self.__class__):
             return self.quantity + other.quantity
         else:
-            return None
+            raise TypeError('Складывать можно только экземпляры классов Phone или Item')
