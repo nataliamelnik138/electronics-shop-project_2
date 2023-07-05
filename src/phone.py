@@ -19,3 +19,17 @@ class Phone(Item):
             self.__number_of_sim = number_of_sim
         else:
             raise ValueError('Количество физических SIM-карт должно быть целым числом больше нуля')
+
+    def __add__(self, other):
+        if type(other) != self.__class__:
+            return TypeError('Нельзя сложить эти объекты')
+        if self.name != other.name:
+            return TypeError('Имена должны совпадать')
+        if self.price != other.price:
+            return TypeError('Цена должна совпадать')
+        return self.__class__(
+            name=self.name,
+            price=self.price,
+            quantity=self.quantity + other.quantity,
+            number_of_sim=self.number_of_sim
+            )

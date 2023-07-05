@@ -52,7 +52,8 @@ def test_add():
     item1 = Item("Смартфон", 10000, 20)
     item2 = Item("Телефон", 20000, 10)
     phone1 = Phone("iPhone 14", 120_000, 5, 2)
-    assert item1 + phone1 == 25
-    assert item1 + item2 == 30
-    assert phone1 + phone1 == 10
-    assert item1 + 10 is None
+    assert item1 + item1 == Item('Смартфон', 10000, 40)
+    # assert item1 + item2 == 30
+    # assert phone1 + phone1 == 10
+    with pytest.raises(TypeError, match='Имена должны совпадать'):
+        Item("Смартфон", 10000, 20) + Item("Телефон", 20000, 10)

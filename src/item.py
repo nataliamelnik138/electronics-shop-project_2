@@ -67,8 +67,21 @@ class Item:
         """Возвращает число из числа-строки"""
         return int(float(number_str))
 
+    # def __add__(self, other):
+    #     if isinstance(other, self.__class__):
+    #         return self.quantity + other.quantity
+    #     else:
+    #         raise TypeError('Складывать можно только экземпляры классов Phone или Item')
+
     def __add__(self, other):
-        if isinstance(other, self.__class__):
-            return self.quantity + other.quantity
-        else:
-            raise TypeError('Складывать можно только экземпляры классов Phone или Item')
+        if type(other) != self.__class__:
+            raise TypeError('Нельзя сложить эти объекты')
+        if self.name != other.name:
+            raise TypeError('Имена должны совпадать')
+        if self.price != other.price:
+            raise TypeError('Цена должна совпадать')
+        return self.__class__(
+            name=self.name,
+            price=self.price,
+            quantity=self.quantity + other.quantity
+        )
