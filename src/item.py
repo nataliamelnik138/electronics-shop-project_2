@@ -73,6 +73,7 @@ class Item:
     #     else:
     #         raise TypeError('Складывать можно только экземпляры классов Phone или Item')
 
+
     def __add__(self, other):
         if type(other) != self.__class__:
             raise TypeError('Нельзя сложить эти объекты')
